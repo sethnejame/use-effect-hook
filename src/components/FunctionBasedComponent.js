@@ -15,6 +15,15 @@ const FunctionBasedComponent = () => {
     setUsers(response.data);
   };
 
+  // check to see if the users object has changed
+  // if you don't pass an array into useEffect, it will continuously load forever
+  // if you pass an empty array, useEffect will not watch any variables
+  useEffect( () => {
+    fetchUsers(users);
+  }, [users])
+
+  
+
   return (
     <Container className="user-list">
       <h1>My Contacts:</h1>
